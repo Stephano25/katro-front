@@ -1,0 +1,139 @@
+/* Conteneur principal */
+.container {
+  text-align: center;
+  margin-top: 20px;
+  font-family: Arial, sans-serif;
+}
+
+/* Plateau */
+.board {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  margin: 20px auto;
+  width: fit-content;
+}
+
+/* Rangées */
+.row {
+  display: flex;
+  justify-content: center;
+  gap: 10px;
+  padding: 5px;
+  transition: background-color 0.3s ease;
+}
+
+/* Rangée active (joueur en cours) */
+.row.active-row {
+  background-color: rgba(255, 255, 0, 0.2);
+  border-radius: 8px;
+}
+
+/* Cases */
+button {
+  background: none;
+  border: none;
+  cursor: pointer;
+  transition: transform 0.2s ease;
+}
+
+/* Rangées extérieures */
+button.outer {
+  border: 2px solid orange;
+  border-radius: 8px;
+}
+
+/* Cases capturées */
+button.captured {
+  animation: fadeOut 0.5s forwards;
+}
+
+/* Cases surlignées pendant l’animation */
+button.highlight .circle {
+  box-shadow: 0 0 10px 3px rgba(0, 150, 255, 0.7);
+  transform: scale(1.06);
+}
+
+/* Cercle représentant une case */
+.circle {
+  width: 50px;
+  height: 50px;
+  border: 2px solid green;
+  border-radius: 50%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-wrap: wrap;
+  position: relative;
+}
+
+/* Graines */
+.dot {
+  width: 10px;
+  height: 10px;
+  background-color: blue;
+  border-radius: 50%;
+  margin: 2px;
+  animation: pop 0.3s ease-in-out;
+}
+
+/* Animation apparition des graines */
+@keyframes pop {
+  0% { transform: scale(0.2); opacity: 0; }
+  100% { transform: scale(1); opacity: 1; }
+}
+
+/* Animation disparition des graines capturées */
+@keyframes fadeOut {
+  0% { background-color: red; opacity: 1; }
+  100% { opacity: 0; transform: scale(0.5); }
+}
+
+/* Message fin de partie */
+h2 {
+  color: red;
+  text-align: center;
+  margin-top: 20px;
+}
+
+/* Bouton Rejouer */
+.reset-btn {
+  margin-top: 20px;
+  padding: 10px 20px;
+  background-color: #28a745;
+  border: none;
+  border-radius: 6px;
+  color: white;
+  font-size: 16px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.reset-btn:hover {
+  background-color: #218838;
+}
+
+.rules {
+  margin: 15px auto;
+  padding: 10px;
+  border: 2px dashed #444;
+  border-radius: 8px;
+  width: 80%;
+  text-align: left;
+  background-color: #f9f9f9;
+}
+
+.rules p {
+  font-weight: bold;
+  margin-bottom: 5px;
+}
+
+.rules ul {
+  margin: 0;
+  padding-left: 20px;
+}
+
+.rules li {
+  margin: 4px 0;
+  font-size: 14px;
+}

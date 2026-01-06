@@ -1,0 +1,58 @@
+<div class="container" *ngIf="state">
+  <h1>KATRO Malagasy</h1>
+
+  <!-- Indicateur du joueur actif -->
+  <p>
+    Tour :
+    <strong>{{ state.currentPlayer === 0 ? 'Joueur 1 (Haut)' : 'Joueur 2 (Bas)' }}</strong>
+  </p>
+
+  <!-- ✅ Message des règles -->
+  <div class="rules">
+    <p>Règles :</p>
+    <ul>
+      <li>Chaque joueur distribue uniquement dans ses deux rangées.</li>
+      <li>On peut commencer depuis n’importe quel trou de son camp.</li>
+      <li>Si la dernière graine tombe dans la rangée extérieure, le joueur peut capturer en face.</li>
+      <li>La capture ajoute les graines dans son propre camp (rangée intérieure).</li>
+      <li>La capture “derrière” est possible seulement si la case “devant” a déjà été prise.</li>
+      <li>La partie se termine dès qu’un joueur n’a plus qu’une seule graine au total.</li>
+    </ul>
+  </div>
+
+  <!-- Plateau -->
+  <div class="board">
+    <div
+      class="row"
+      *ngFor="let row of state.board; let r = index"
+      [class.active-row]="isActiveRow(r)"
+    >
+      <button
+        *ngFor="let cell of row; let c = index"
+        (click)="play(r, c)"
+        [class.outer]="r === 0 || r === 3"
+        [class.captured]="isCaptured(r, c)"
+        [class.highlight]="highlight[r][c]"
+        [disabled]="!isPlayable(r)"
+      >
+        <div class="circle">
+          <div class="dot" *ngFor="let dot of [].constructor(cell)"></div>
+        </div>
+      </button>
+    </div>
+  </div>
+
+  <!-- Scores -->
+  <p>
+    Score Joueur 1 : {{ state.scores[0] }} |
+    Score Joueur 2 : {{ state.scores[1] }}
+  </p>
+
+  <!-- Fin de partie -->
+  <h2 *ngIf="state.gameOver">Fin du jeu 🎉</h2>
+
+  <!-- Bouton Rejouer -->
+  <button *ngIf="state.gameOver" (click)="reset()" class="reset-btn">
+    Rejouer
+  </button>
+</div>
