@@ -1,32 +1,42 @@
-/* Conteneur principal */
+/* Fond général */
 .container {
   text-align: center;
   margin-top: 20px;
-  font-family: Arial, sans-serif;
+  font-family: 'Poppins', sans-serif;
+  background: linear-gradient(135deg, #1f1c2c, #928dab);
+  min-height: 100vh;
+  padding: 20px;
+  color: #f5f5f5;
 }
 
-/* Plateau */
+/* Plateau moderne */
 .board {
   display: flex;
   flex-direction: column;
-  gap: 10px;
+  gap: 12px;
   margin: 20px auto;
-  width: fit-content;
+  padding: 20px;
+  background: rgba(255, 255, 255, 0.05);
+  border: 2px solid rgba(255, 255, 255, 0.2);
+  border-radius: 20px;
+  box-shadow: 0 8px 25px rgba(0,0,0,0.4);
+  backdrop-filter: blur(8px);
 }
 
 /* Rangées */
 .row {
   display: flex;
   justify-content: center;
-  gap: 10px;
-  padding: 5px;
+  gap: 12px;
+  padding: 8px;
   transition: background-color 0.3s ease;
 }
 
-/* Rangée active (joueur en cours) */
+/* Rangée active */
 .row.active-row {
-  background-color: rgba(255, 255, 0, 0.2);
-  border-radius: 8px;
+  background: rgba(0, 255, 255, 0.1);
+  border-radius: 12px;
+  box-shadow: inset 0 0 15px rgba(0, 255, 255, 0.6);
 }
 
 /* Cases */
@@ -37,103 +47,83 @@ button {
   transition: transform 0.2s ease;
 }
 
-/* Rangées extérieures */
-button.outer {
-  border: 2px solid orange;
-  border-radius: 8px;
-}
-
-/* Cases capturées */
-button.captured {
-  animation: fadeOut 0.5s forwards;
-}
-
-/* Cases surlignées pendant l’animation */
-button.highlight .circle {
-  box-shadow: 0 0 10px 3px rgba(0, 150, 255, 0.7);
-  transform: scale(1.06);
-}
-
-/* Cercle représentant une case */
+/* Trous modernes */
 .circle {
-  width: 50px;
-  height: 50px;
-  border: 2px solid green;
+  width: 60px;
+  height: 60px;
+  background: linear-gradient(145deg, #2c2c54, #40407a);
   border-radius: 50%;
+  box-shadow: inset 0 4px 12px rgba(0,0,0,0.8), 0 0 8px rgba(0,255,255,0.4);
   display: flex;
   justify-content: center;
   align-items: center;
   flex-wrap: wrap;
   position: relative;
+  transition: transform 0.2s ease;
 }
 
-/* Graines */
+.circle:hover {
+  transform: scale(1.05);
+  box-shadow: inset 0 4px 12px rgba(0,0,0,0.8), 0 0 12px rgba(0,255,255,0.8);
+}
+
+/* Graines modernes */
 .dot {
-  width: 10px;
-  height: 10px;
-  background-color: blue;
+  width: 12px;
+  height: 12px;
+  background: radial-gradient(circle, #00ffcc, #0099ff);
   border-radius: 50%;
   margin: 2px;
   animation: pop 0.3s ease-in-out;
+  box-shadow: 0 0 6px rgba(0,255,255,0.8);
 }
 
-/* Animation apparition des graines */
+/* Animation apparition */
 @keyframes pop {
   0% { transform: scale(0.2); opacity: 0; }
   100% { transform: scale(1); opacity: 1; }
 }
 
-/* Animation disparition des graines capturées */
-@keyframes fadeOut {
-  0% { background-color: red; opacity: 1; }
-  100% { opacity: 0; transform: scale(0.5); }
+/* Capture moderne */
+button.captured .circle {
+  animation: captureFlash 0.6s ease-in-out;
 }
 
-/* Message fin de partie */
+@keyframes captureFlash {
+  0% { box-shadow: 0 0 20px 8px #ff0066; }
+  100% { box-shadow: inset 0 4px 12px rgba(0,0,0,0.8), 0 0 8px rgba(0,255,255,0.4); }
+}
+
+/* Fin du jeu */
 h2 {
-  color: red;
+  color: #ff0066;
   text-align: center;
   margin-top: 20px;
+  font-size: 26px;
+  font-weight: bold;
+  animation: blink 1s infinite alternate;
 }
 
-/* Bouton Rejouer */
+@keyframes blink {
+  from { opacity: 1; }
+  to { opacity: 0.5; }
+}
+
+/* Bouton Rejouer moderne */
 .reset-btn {
   margin-top: 20px;
-  padding: 10px 20px;
-  background-color: #28a745;
+  padding: 12px 28px;
+  background: linear-gradient(135deg, #00ffcc, #0099ff);
   border: none;
-  border-radius: 6px;
-  color: white;
-  font-size: 16px;
+  border-radius: 10px;
+  color: #1f1c2c;
+  font-size: 18px;
+  font-weight: bold;
   cursor: pointer;
-  transition: background-color 0.3s ease;
+  transition: background 0.3s ease, transform 0.2s;
 }
 
 .reset-btn:hover {
-  background-color: #218838;
-}
-
-.rules {
-  margin: 15px auto;
-  padding: 10px;
-  border: 2px dashed #444;
-  border-radius: 8px;
-  width: 80%;
-  text-align: left;
-  background-color: #f9f9f9;
-}
-
-.rules p {
-  font-weight: bold;
-  margin-bottom: 5px;
-}
-
-.rules ul {
-  margin: 0;
-  padding-left: 20px;
-}
-
-.rules li {
-  margin: 4px 0;
-  font-size: 14px;
+  background: linear-gradient(135deg, #0099ff, #00ffcc);
+  transform: scale(1.08);
 }
