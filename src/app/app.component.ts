@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { KatroService } from './services/katro.service';
-import { GameState } from './models/game-state'; // ✅ typage fort
+import { GameState } from './models/game-state';
 
 @Component({
   selector: 'app-root',
@@ -11,7 +11,7 @@ import { GameState } from './models/game-state'; // ✅ typage fort
   styleUrls: ['./app.component.css'],
 })
 export class AppComponent implements OnInit {
-  state!: GameState; // ✅ typage fort
+  state!: GameState; //typage fort
   highlight: boolean[][] = [
     [false, false, false, false],
     [false, false, false, false],
@@ -61,7 +61,7 @@ export class AppComponent implements OnInit {
     );
   }
 
-  // ✅ Animation séquentielle du chemin renvoyé par le backend
+  //Animation séquentielle du chemin renvoyé par le backend
   animatePath() {
     this.highlight = this.highlight.map(row => row.map(() => false));
 

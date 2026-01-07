@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
-import { GameState } from '../models/game-state'; // ✅ import du modèle
+import { GameState } from '../models/game-state';
 
 @Injectable({
   providedIn: 'root',

@@ -7,16 +7,16 @@
     <strong>{{ state.currentPlayer === 0 ? 'Joueur 1 (Haut)' : 'Joueur 2 (Bas)' }}</strong>
   </p>
 
-  <!-- ✅ Message des règles -->
+  <!--  Message des règles -->
   <div class="rules">
     <p>Règles :</p>
     <ul>
-      <li>Chaque joueur distribue uniquement dans ses deux rangées.</li>
-      <li>On peut commencer depuis n’importe quel trou de son camp.</li>
-      <li>Si la dernière graine tombe dans la rangée extérieure, le joueur peut capturer en face.</li>
-      <li>La capture ajoute les graines dans son propre camp (rangée intérieure).</li>
-      <li>La capture “derrière” est possible seulement si la case “devant” a déjà été prise.</li>
-      <li>La partie se termine dès qu’un joueur n’a plus qu’une seule graine au total.</li>
+      <li>1.Chaque joueur distribue uniquement dans ses deux rangées.</li>
+      <li>2.On peut commencer depuis n’importe quel trou de son camp.</li>
+      <li>3.Si la dernière graine tombe dans la rangée extérieure, le joueur peut capturer en face.</li>
+      <li>4.La capture ajoute les graines dans son propre camp (rangée intérieure).</li>
+      <li>5.La capture “derrière” est possible seulement si la case “devant” a déjà été prise.</li>
+      <li>6.La partie se termine dès qu’un joueur n’a plus qu’une seule graine au total.</li>
     </ul>
   </div>
 
@@ -49,7 +49,7 @@
   </p>
 
   <!-- Fin de partie -->
-  <h2 *ngIf="state.gameOver">Fin du jeu 🎉</h2>
+  <h2 *ngIf="state.gameOver">Fin du jeu </h2>
 
   <!-- Bouton Rejouer -->
   <button *ngIf="state.gameOver" (click)="reset()" class="reset-btn">
